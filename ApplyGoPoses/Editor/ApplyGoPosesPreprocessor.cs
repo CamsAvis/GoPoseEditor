@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEngine;
 using VRC.SDK3.Avatars.Components;
 using VRC.SDKBase.Editor.BuildPipeline;
-using static Cam.GoGo.GoPoseFunctions;
 
 namespace Cam.GoGo
 {
@@ -37,7 +36,7 @@ namespace Cam.GoGo
 
 			Debug.Log("[ApplyCustomGoGoPosesPreprocessor] Found VRCAvatarDescriptor on avatar. Applying GoGo customization.");
 
-			var baseController = GetPlayableLayerFromDescriptor(desc, VRCAvatarDescriptor.AnimLayerType.Base);
+			var baseController = GoPoseFunctions.GetPlayableLayerFromDescriptor(desc, VRCAvatarDescriptor.AnimLayerType.Base);
 			if(baseController)
 			{
 				GoPose MenuPose;
@@ -55,12 +54,12 @@ namespace Cam.GoGo
 				}
 
 				Debug.Log("[ApplyCustomGoGoPosesPreprocessor] Updating menu pose in base layer.");
-				UpdateMenuPose(baseController, MenuPose);
+				GoPoseFunctions.UpdateMenuPose(baseController, MenuPose);
 				Debug.Log("[ApplyCustomGoGoPosesPreprocessor] Menu pose updated.");
 			}
 
 			Debug.Log("[ApplyCustomGoGoPosesPreprocessor] Retrieving action layer.");
-			var actionController = GetPlayableLayerFromDescriptor(desc, VRCAvatarDescriptor.AnimLayerType.Action);
+			var actionController = GoPoseFunctions.GetPlayableLayerFromDescriptor(desc, VRCAvatarDescriptor.AnimLayerType.Action);
 			if (actionController)
 			{
 				Debug.Log("[ApplyCustomGoGoPosesPreprocessor] Action layer found. Applying AFK poses.");

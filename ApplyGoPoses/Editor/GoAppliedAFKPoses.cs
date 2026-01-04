@@ -2,9 +2,6 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
-using static Cam.GoGo.GoPoseConstants;
-using static Cam.GoGo.DefaultGoClips;
-
 namespace Cam.GoGo {
 	public class GoAppliedAFKPoses
 	{
@@ -25,40 +22,40 @@ namespace Cam.GoGo {
 		public static GoAppliedAFKPoses Default() {
 			return new GoAppliedAFKPoses()
 			{
-				AFKPose_StandInit = GP(DefaultAfkStandInitClip),
-				AFKPose_StandLooping = GP(DefaultAfkStandLoopClip),
-				AFKPose_StandExit = GP(DefaultAfkStandExitClip),
-				AFKPose_CrouchInit = GP(DefaultAfkCrouchInitClip),
-				AFKPose_CrouchLooping = GP(DefaultAfkCrouchLoopClip),
-				AFKPose_CrouchExit = GP(DefaultAfkCrouchExitClip),
-				AFKPose_ProneInit = GP(DefaultAfkProneInitClip),
-				AFKPose_ProneLooping = GP(DefaultAfkProneLoopClip),
-				AFKPose_ProneExit = GP(DefaultAfkProneExitClip)
+				AFKPose_StandInit = GP(DefaultGoClips.DefaultAfkStandInitClip),
+				AFKPose_StandLooping = GP(DefaultGoClips.DefaultAfkStandLoopClip),
+				AFKPose_StandExit = GP(DefaultGoClips.DefaultAfkStandExitClip),
+				AFKPose_CrouchInit = GP(DefaultGoClips.DefaultAfkCrouchInitClip),
+				AFKPose_CrouchLooping = GP(DefaultGoClips.DefaultAfkCrouchLoopClip),
+				AFKPose_CrouchExit = GP(DefaultGoClips.DefaultAfkCrouchExitClip),
+				AFKPose_ProneInit = GP(DefaultGoClips.DefaultAfkProneInitClip),
+				AFKPose_ProneLooping = GP(DefaultGoClips.DefaultAfkProneLoopClip),
+				AFKPose_ProneExit = GP(DefaultGoClips.DefaultAfkProneExitClip)
 			};
 		}
 
 		public void SetAFKPosesBasic(GoPose basicPose)
 		{
 			AFKPose_StandInit = AFKPose_StandLooping = basicPose;
-			AFKPose_StandExit = GP(DefaultStandingPose);
+			AFKPose_StandExit = GP(DefaultGoClips.DefaultStandingPose);
 
 			AFKPose_CrouchInit = AFKPose_CrouchLooping = basicPose;
-			AFKPose_CrouchExit = GP(DefaultCrouchingPose);
+			AFKPose_CrouchExit = GP(DefaultGoClips.DefaultCrouchingPose);
 
 			AFKPose_ProneInit = AFKPose_ProneLooping = basicPose;
-			AFKPose_ProneExit = GP(DefaultPronePose);		
+			AFKPose_ProneExit = GP(DefaultGoClips.DefaultPronePose);		
 		}
 
 		public void SetAFKPosesAdvanced(GoPose AdvancedAFKPose_Stand, GoPose AdvancedAFKPose_Crouch, GoPose AdvancedAFKPose_Prone)
 		{
 			AFKPose_StandInit = AFKPose_StandLooping = AdvancedAFKPose_Stand;
-			AFKPose_StandExit = GP(DefaultStandingPose);
+			AFKPose_StandExit = GP(DefaultGoClips.DefaultStandingPose);
 
 			AFKPose_CrouchInit = AFKPose_CrouchLooping = AdvancedAFKPose_Crouch;
-			AFKPose_CrouchExit = GP(DefaultCrouchingPose);
+			AFKPose_CrouchExit = GP(DefaultGoClips.DefaultCrouchingPose);
 
 			AFKPose_ProneInit = AFKPose_ProneLooping = AdvancedAFKPose_Prone;
-			AFKPose_ProneExit = GP(DefaultPronePose);		
+			AFKPose_ProneExit = GP(DefaultGoClips.DefaultPronePose);		
 		}
 
 		public void SetAFKPosesSuperAdvanced(GoSuperAdvancedAFKPoses StandPoses, GoSuperAdvancedAFKPoses CrouchPoses, GoSuperAdvancedAFKPoses PronePoses) {
@@ -133,7 +130,7 @@ namespace Cam.GoGo {
 		}
 
 		public void UpdateAFKPosesRecursive(AnimatorStateMachine stateMachine, GoAFKStance stance, GoPose init, GoPose looping, GoPose exit, ref bool initSet, ref bool loopingSet, ref bool exitSet) {
-			GoAFKAnimatorStateNames STATE_NAMES = GOGO_STATE_NAME_DICT[stance];
+			GoAFKAnimatorStateNames STATE_NAMES = GoPoseConstants.GOGO_STATE_NAME_DICT[stance];
 
 			if(initSet && loopingSet && exitSet) {
 				return;

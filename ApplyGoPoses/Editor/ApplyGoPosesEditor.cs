@@ -1,7 +1,6 @@
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-using static Cam.GoGo.GoPoseFunctions;
 
 namespace Cam.GoGo
 {
@@ -16,31 +15,31 @@ namespace Cam.GoGo
 			soTarget = new SerializedObject(target);
 
 			// Menu Pose
-			SetGoPoseIfNull(soTarget, "MenuPose", DefaultGoClips.DefaultMenuClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "MenuPose", DefaultGoClips.DefaultMenuClip);
 
 			// Basic Pose
-			SetGoPoseIfNull(soTarget, "BasicAFKPose_All", DefaultGoClips.DefaultAfkCrouchLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "BasicAFKPose_All", DefaultGoClips.DefaultAfkCrouchLoopClip);
 
 			// Advanced Poses
-			SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Stand", DefaultGoClips.DefaultAfkStandLoopClip);
-			SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Crouch", DefaultGoClips.DefaultAfkCrouchLoopClip);
-			SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Prone", DefaultGoClips.DefaultAfkProneLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Stand", DefaultGoClips.DefaultAfkStandLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Crouch", DefaultGoClips.DefaultAfkCrouchLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Prone", DefaultGoClips.DefaultAfkProneLoopClip);
 
 			// Super Advanced Poses
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseInit", DefaultGoClips.DefaultAfkCrouchInitClip);
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseLooping", DefaultGoClips.DefaultAfkCrouchLoopClip);
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseExit", DefaultGoClips.DefaultAfkCrouchExitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseInit", DefaultGoClips.DefaultAfkCrouchInitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseLooping", DefaultGoClips.DefaultAfkCrouchLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseExit", DefaultGoClips.DefaultAfkCrouchExitClip);
 
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseInit", DefaultGoClips.DefaultAfkProneInitClip);
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseLooping", DefaultGoClips.DefaultAfkProneLoopClip);
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseExit", DefaultGoClips.DefaultAfkProneExitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseInit", DefaultGoClips.DefaultAfkProneInitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseLooping", DefaultGoClips.DefaultAfkProneLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseExit", DefaultGoClips.DefaultAfkProneExitClip);
 
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseInit", DefaultGoClips.DefaultAfkStandInitClip);
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseLooping", DefaultGoClips.DefaultAfkStandLoopClip);
-			SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseExit", DefaultGoClips.DefaultAfkStandExitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseInit", DefaultGoClips.DefaultAfkStandInitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseLooping", DefaultGoClips.DefaultAfkStandLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseExit", DefaultGoClips.DefaultAfkStandExitClip);
 
 			// Check for multiple components
-			ValidateHasMultipleComponents((target as Component).gameObject);
+			GoPoseFunctions.ValidateHasMultipleComponents((target as Component).gameObject);
 
 			// Apply changes
 			soTarget.ApplyModifiedProperties();
@@ -239,7 +238,7 @@ namespace Cam.GoGo
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(target, "Modify Menu Pose");
-				SetGoPose(soTarget, "MenuPose", clip, speed);
+				GoPoseFunctions.SetGoPose(soTarget, "MenuPose", clip, speed);
 			}
 		}
 

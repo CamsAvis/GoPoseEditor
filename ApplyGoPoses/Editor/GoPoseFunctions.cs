@@ -1,11 +1,9 @@
 #if UNITY_EDITOR
-using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 using VRC.SDK3.Avatars.Components;
-using static Cam.GoGo.GoPoseConstants;	
 
 namespace Cam.GoGo {
 	public enum GoAFKStance {
@@ -91,7 +89,7 @@ namespace Cam.GoGo {
 
 		public static void UpdateAFKPoseRecursive(AnimatorStateMachine stateMachine, GoSuperAdvancedAFKPoses afkPoses, GoAFKStance stance)
 		{
-			GoAFKAnimatorStateNames STATE_NAMES = GOGO_STATE_NAME_DICT[stance];
+			GoAFKAnimatorStateNames STATE_NAMES = GoPoseConstants.GOGO_STATE_NAME_DICT[stance];
 
 			foreach (var state in stateMachine.states)
 			{
@@ -134,7 +132,7 @@ namespace Cam.GoGo {
 		{
 			foreach (var st in stateMachine.states)
 			{
-				if (st.state.name == AVATAR_3D_THUMBNAIL_STATE_NAME)
+				if (st.state.name == GoPoseConstants.AVATAR_3D_THUMBNAIL_STATE_NAME)
 				{
 					st.state.motion = MenuPose.pose ?? st.state.motion;
 					st.state.speed = MenuPose.speed;
