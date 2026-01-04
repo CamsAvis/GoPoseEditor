@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Cam.GoGo
 {
-	[CustomEditor(typeof(ApplyGoPoses))]
-	public class ApplyGoPosesEditor : Editor
+	[CustomEditor(typeof(GoCustomizePosesBehavior))]
+	public class GoApplyPosesEditor : Editor
 	{
 		SerializedObject soTarget = null;
 		bool hasMultipleComponents = false;
@@ -15,28 +15,28 @@ namespace Cam.GoGo
 			soTarget = new SerializedObject(target);
 
 			// Menu Pose
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "MenuPose", DefaultGoClips.DefaultMenuClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "MenuPose", GoDefaultClips.DefaultMenuClip);
 
 			// Basic Pose
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "BasicAFKPose_All", DefaultGoClips.DefaultAfkCrouchLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "BasicAFKPose_All", GoDefaultClips.DefaultAfkCrouchLoopClip);
 
 			// Advanced Poses
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Stand", DefaultGoClips.DefaultAfkStandLoopClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Crouch", DefaultGoClips.DefaultAfkCrouchLoopClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Prone", DefaultGoClips.DefaultAfkProneLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Stand", GoDefaultClips.DefaultAfkStandLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Crouch", GoDefaultClips.DefaultAfkCrouchLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "AdvancedAFKPose_Prone", GoDefaultClips.DefaultAfkProneLoopClip);
 
 			// Super Advanced Poses
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseInit", DefaultGoClips.DefaultAfkCrouchInitClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseLooping", DefaultGoClips.DefaultAfkCrouchLoopClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseExit", DefaultGoClips.DefaultAfkCrouchExitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseInit", GoDefaultClips.DefaultAfkCrouchInitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseLooping", GoDefaultClips.DefaultAfkCrouchLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Crouch.AFKPoseExit", GoDefaultClips.DefaultAfkCrouchExitClip);
 
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseInit", DefaultGoClips.DefaultAfkProneInitClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseLooping", DefaultGoClips.DefaultAfkProneLoopClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseExit", DefaultGoClips.DefaultAfkProneExitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseInit", GoDefaultClips.DefaultAfkProneInitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseLooping", GoDefaultClips.DefaultAfkProneLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Prone.AFKPoseExit", GoDefaultClips.DefaultAfkProneExitClip);
 
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseInit", DefaultGoClips.DefaultAfkStandInitClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseLooping", DefaultGoClips.DefaultAfkStandLoopClip);
-			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseExit", DefaultGoClips.DefaultAfkStandExitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseInit", GoDefaultClips.DefaultAfkStandInitClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseLooping", GoDefaultClips.DefaultAfkStandLoopClip);
+			GoPoseFunctions.SetGoPoseIfNull(soTarget, "SuperAdvancedAFKPose_Stand.AFKPoseExit", GoDefaultClips.DefaultAfkStandExitClip);
 
 			// Check for multiple components
 			GoPoseFunctions.ValidateHasMultipleComponents((target as Component).gameObject);
@@ -104,7 +104,7 @@ namespace Cam.GoGo
 			EditorGUILayout.HelpBox("Use one, unified AFK pose", MessageType.Info);
 			GUILayout.Space(5);
 
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkClip, GoAFKStance.All, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Basic);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkClip, GoAFKStance.All, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Basic);
 		}
 
 		void DrawAFKPoseAdvanced()
@@ -113,9 +113,9 @@ namespace Cam.GoGo
 			EditorGUILayout.HelpBox("Use individual AFK poses for each stance", MessageType.Info);
 			GUILayout.Space(5);
 
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkStandLoopClip, GoAFKStance.Stand, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Advanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkCrouchLoopClip, GoAFKStance.Crouch, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Advanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkProneLoopClip, GoAFKStance.Prone, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Advanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkStandLoopClip, GoAFKStance.Stand, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Advanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkCrouchLoopClip, GoAFKStance.Crouch, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Advanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkProneLoopClip, GoAFKStance.Prone, GoAFKAnimatorState.All, GoAFKCustomizationMethod.Advanced);
 		}
 
 		void DrawAFKPoseSuperAdvanced()
@@ -126,25 +126,25 @@ namespace Cam.GoGo
 
 			GUILayout.Label("Standing AFK Poses", EditorStyles.boldLabel);
 			GUILayout.Space(2);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkStandInitClip, GoAFKStance.Stand, GoAFKAnimatorState.Init, GoAFKCustomizationMethod.SuperAdvanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkStandLoopClip, GoAFKStance.Stand, GoAFKAnimatorState.Looping, GoAFKCustomizationMethod.SuperAdvanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkStandExitClip, GoAFKStance.Stand, GoAFKAnimatorState.Exit, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkStandInitClip, GoAFKStance.Stand, GoAFKAnimatorState.Init, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkStandLoopClip, GoAFKStance.Stand, GoAFKAnimatorState.Looping, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkStandExitClip, GoAFKStance.Stand, GoAFKAnimatorState.Exit, GoAFKCustomizationMethod.SuperAdvanced);
 
 			GUILayout.Space(10);
 
 			GUILayout.Label("Crouching AFK Poses", EditorStyles.boldLabel);
 			GUILayout.Space(2);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkCrouchInitClip, GoAFKStance.Crouch, GoAFKAnimatorState.Init, GoAFKCustomizationMethod.SuperAdvanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkCrouchLoopClip, GoAFKStance.Crouch, GoAFKAnimatorState.Looping, GoAFKCustomizationMethod.SuperAdvanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkCrouchExitClip, GoAFKStance.Crouch, GoAFKAnimatorState.Exit, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkCrouchInitClip, GoAFKStance.Crouch, GoAFKAnimatorState.Init, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkCrouchLoopClip, GoAFKStance.Crouch, GoAFKAnimatorState.Looping, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkCrouchExitClip, GoAFKStance.Crouch, GoAFKAnimatorState.Exit, GoAFKCustomizationMethod.SuperAdvanced);
 
 			GUILayout.Space(10);
 
 			GUILayout.Label("Proning AFK Poses", EditorStyles.boldLabel);
 			GUILayout.Space(2);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkProneInitClip, GoAFKStance.Prone, GoAFKAnimatorState.Init, GoAFKCustomizationMethod.SuperAdvanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkProneLoopClip, GoAFKStance.Prone, GoAFKAnimatorState.Looping, GoAFKCustomizationMethod.SuperAdvanced);
-			DrawAFKClipSelection(DefaultGoClips.DefaultAfkProneExitClip, GoAFKStance.Prone, GoAFKAnimatorState.Exit, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkProneInitClip, GoAFKStance.Prone, GoAFKAnimatorState.Init, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkProneLoopClip, GoAFKStance.Prone, GoAFKAnimatorState.Looping, GoAFKCustomizationMethod.SuperAdvanced);
+			DrawAFKClipSelection(GoDefaultClips.DefaultAfkProneExitClip, GoAFKStance.Prone, GoAFKAnimatorState.Exit, GoAFKCustomizationMethod.SuperAdvanced);
 		}
 
 
@@ -230,7 +230,7 @@ namespace Cam.GoGo
 
 				if (IconButton("Refresh"))
 				{
-					clip = DefaultGoClips.DefaultMenuClip;
+					clip = GoDefaultClips.DefaultMenuClip;
 					speed = 1.0f;
 				}
 			}

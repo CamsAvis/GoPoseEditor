@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Cam.GoGo {
 	[InitializeOnLoad]
-	public static class DefaultGoClips
+	public static class GoDefaultClips
 	{
 		public static AnimationClip DefaultMenuClip { get; private set; }
 		public static AnimationClip DefaultAfkClip { get; private set; }
@@ -32,7 +32,7 @@ namespace Cam.GoGo {
 
 		private static bool _initialized;
 
-		static DefaultGoClips() => Initialize();
+		static GoDefaultClips() => Initialize();
 
 		public static void Initialize()
 		{

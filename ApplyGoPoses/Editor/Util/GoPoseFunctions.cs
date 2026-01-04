@@ -47,7 +47,7 @@ namespace Cam.GoGo {
 		public static bool ValidateHasMultipleComponents(GameObject go)
 		{
 			VRCAvatarDescriptor descriptor = FindDescriptorUp(go);
-			return descriptor && descriptor.GetComponentsInChildren<ApplyGoPoses>().Length > 1;
+			return descriptor && descriptor.GetComponentsInChildren<GoCustomizePosesBehavior>().Length > 1;
 		}
 
 

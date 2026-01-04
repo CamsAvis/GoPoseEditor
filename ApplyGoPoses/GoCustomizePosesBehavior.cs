@@ -35,7 +35,7 @@ namespace Cam.GoGo
 	// - {Basic}AFKPose_{All}
 	// - {SuperAdvanced}AFKPose_{Stand}.AFKPose{Init}
 	[System.Serializable]
-	public class ApplyGoPoses : MonoBehaviour, IEditorOnly
+	public class GoCustomizePosesBehavior : MonoBehaviour, IEditorOnly
 	{
 		[SerializeField] public GoAFKCustomizationMethod AfkPoseMethod;
 		[SerializeField] public GoMenuPoseMethod MenuPoseMethod = GoMenuPoseMethod.Custom;

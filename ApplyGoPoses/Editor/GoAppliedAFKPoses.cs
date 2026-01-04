@@ -22,40 +22,40 @@ namespace Cam.GoGo {
 		public static GoAppliedAFKPoses Default() {
 			return new GoAppliedAFKPoses()
 			{
-				AFKPose_StandInit = GP(DefaultGoClips.DefaultAfkStandInitClip),
-				AFKPose_StandLooping = GP(DefaultGoClips.DefaultAfkStandLoopClip),
-				AFKPose_StandExit = GP(DefaultGoClips.DefaultAfkStandExitClip),
-				AFKPose_CrouchInit = GP(DefaultGoClips.DefaultAfkCrouchInitClip),
-				AFKPose_CrouchLooping = GP(DefaultGoClips.DefaultAfkCrouchLoopClip),
-				AFKPose_CrouchExit = GP(DefaultGoClips.DefaultAfkCrouchExitClip),
-				AFKPose_ProneInit = GP(DefaultGoClips.DefaultAfkProneInitClip),
-				AFKPose_ProneLooping = GP(DefaultGoClips.DefaultAfkProneLoopClip),
-				AFKPose_ProneExit = GP(DefaultGoClips.DefaultAfkProneExitClip)
+				AFKPose_StandInit = GP(GoDefaultClips.DefaultAfkStandInitClip),
+				AFKPose_StandLooping = GP(GoDefaultClips.DefaultAfkStandLoopClip),
+				AFKPose_StandExit = GP(GoDefaultClips.DefaultAfkStandExitClip),
+				AFKPose_CrouchInit = GP(GoDefaultClips.DefaultAfkCrouchInitClip),
+				AFKPose_CrouchLooping = GP(GoDefaultClips.DefaultAfkCrouchLoopClip),
+				AFKPose_CrouchExit = GP(GoDefaultClips.DefaultAfkCrouchExitClip),
+				AFKPose_ProneInit = GP(GoDefaultClips.DefaultAfkProneInitClip),
+				AFKPose_ProneLooping = GP(GoDefaultClips.DefaultAfkProneLoopClip),
+				AFKPose_ProneExit = GP(GoDefaultClips.DefaultAfkProneExitClip)
 			};
 		}
 
 		public void SetAFKPosesBasic(GoPose basicPose)
 		{
 			AFKPose_StandInit = AFKPose_StandLooping = basicPose;
-			AFKPose_StandExit = GP(DefaultGoClips.DefaultStandingPose);
+			AFKPose_StandExit = GP(GoDefaultClips.DefaultStandingPose);
 
 			AFKPose_CrouchInit = AFKPose_CrouchLooping = basicPose;
-			AFKPose_CrouchExit = GP(DefaultGoClips.DefaultCrouchingPose);
+			AFKPose_CrouchExit = GP(GoDefaultClips.DefaultCrouchingPose);
 
 			AFKPose_ProneInit = AFKPose_ProneLooping = basicPose;
-			AFKPose_ProneExit = GP(DefaultGoClips.DefaultPronePose);		
+			AFKPose_ProneExit = GP(GoDefaultClips.DefaultPronePose);		
 		}
 
 		public void SetAFKPosesAdvanced(GoPose AdvancedAFKPose_Stand, GoPose AdvancedAFKPose_Crouch, GoPose AdvancedAFKPose_Prone)
 		{
 			AFKPose_StandInit = AFKPose_StandLooping = AdvancedAFKPose_Stand;
-			AFKPose_StandExit = GP(DefaultGoClips.DefaultStandingPose);
+			AFKPose_StandExit = GP(GoDefaultClips.DefaultStandingPose);
 
 			AFKPose_CrouchInit = AFKPose_CrouchLooping = AdvancedAFKPose_Crouch;
-			AFKPose_CrouchExit = GP(DefaultGoClips.DefaultCrouchingPose);
+			AFKPose_CrouchExit = GP(GoDefaultClips.DefaultCrouchingPose);
 
 			AFKPose_ProneInit = AFKPose_ProneLooping = AdvancedAFKPose_Prone;
-			AFKPose_ProneExit = GP(DefaultGoClips.DefaultPronePose);		
+			AFKPose_ProneExit = GP(GoDefaultClips.DefaultPronePose);		
 		}
 
 		public void SetAFKPosesSuperAdvanced(GoSuperAdvancedAFKPoses StandPoses, GoSuperAdvancedAFKPoses CrouchPoses, GoSuperAdvancedAFKPoses PronePoses) {

@@ -5,7 +5,7 @@ using VRC.SDKBase.Editor.BuildPipeline;
 
 namespace Cam.GoGo
 {
-	public class ApplyGoPosesPreprocessor : IVRCSDKPreprocessAvatarCallback
+	public class GoApplyPosesPreprocessor : IVRCSDKPreprocessAvatarCallback
 	{
 		public int callbackOrder => 15000;
 
@@ -21,7 +21,7 @@ namespace Cam.GoGo
 		}
 
 		bool Preprocess(GameObject avatar) { 
-			ApplyGoPoses[] components = avatar.gameObject.GetComponentsInChildren<ApplyGoPoses>(true);
+			GoCustomizePosesBehavior[] components = avatar.gameObject.GetComponentsInChildren<GoCustomizePosesBehavior>(true);
 
 			if (components.Length > 1) {
 				EditorUtility.DisplayDialog("Multiple GoGo customization components found", "Multiple GoGo customization components found on avatar.Please ensure only one exists.", "ok");	
@@ -29,7 +29,7 @@ namespace Cam.GoGo
 				return false;
 			}
 
-			ApplyGoPoses goPoseSettings = components[0];
+			GoCustomizePosesBehavior goPoseSettings = components[0];
 
 			var desc = avatar.GetComponent<VRCAvatarDescriptor>();
 			if (!desc || !desc.customExpressions) return true;
@@ -49,7 +49,7 @@ namespace Cam.GoGo
 						break;
 					default:
 						Debug.Log("[ApplyCustomGoGoPosesPreprocessor] Applying default menu pose.");
-						MenuPose = new GoPose() { pose = DefaultGoClips.DefaultMenuClip, speed = 1.0f };
+						MenuPose = new GoPose() { pose = GoDefaultClips.DefaultMenuClip, speed = 1.0f };
 						break;
 				}
 
